@@ -1,11 +1,69 @@
 // app/page.tsx (Client Component)
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { auth, googleProvider, db } from "../lib/firebase";
+import {
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  type User,
+} from "firebase/auth";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 export default function Page() {
   const currentYear = new Date().getFullYear();
+  const [user, setUser] = useState<User | null>(null);
+  const [loadingAuth, setLoadingAuth] = useState(false);
+
+  // 로그인 상태 감지 + Firestore에 유저 정보 저장
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
+      setUser(firebaseUser);
+      if (firebaseUser) {
+        // 비밀번호는 절대 저장 X
+        await setDoc(
+          doc(db, "users", firebaseUser.uid),
+          {
+            email: firebaseUser.email,
+            displayName: firebaseUser.displayName,
+            photoURL: firebaseUser.photoURL,
+            provider: firebaseUser.providerData?.[0]?.providerId,
+            updatedAt: serverTimestamp(),
+            createdAt: serverTimestamp(),
+          },
+          { merge: true }
+        );
+      }
+    });
+
+    return () => unsub();
+  }, []);
+
+  const handleGoogleLogin = async () => {
+    try {
+      setLoadingAuth(true);
+      await signInWithPopup(auth, googleProvider);
+    } catch (err) {
+      console.error(err);
+      alert("로그인 중 오류가 발생했어요. 잠시 후 다시 시도해주세요.");
+    } finally {
+      setLoadingAuth(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      setLoadingAuth(true);
+      await signOut(auth);
+    } catch (err) {
+      console.error(err);
+      alert("로그아웃 중 오류가 발생했어요.");
+    } finally {
+      setLoadingAuth(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-[#190F58] text-white relative">
@@ -17,20 +75,36 @@ export default function Page() {
         >
           noworrieskorea
         </Link>
-        <nav
-          className="hidden items-center gap-6 text-sm text-blue-100/80 sm:flex"
-          aria-label="Primary"
-        >
-          <Link href="#package" className="hover:text-white">
-            Spring Package
-          </Link>
-          <Link href="#benefits" className="hover:text-white">
-            Benefits
-          </Link>
-          <Link href="#contact" className="hover:text-white">
-            Contact
-          </Link>
-        </nav>
+
+        <div className="flex items-center gap-4">
+          <nav
+            className="hidden items-center gap-6 text-sm text-blue-100/80 sm:flex"
+            aria-label="Primary"
+          >
+            <Link href="#package" className="hover:text-white">
+              Spring Package
+            </Link>
+            <Link href="#benefits" className="hover:text-white">
+              Benefits
+            </Link>
+            <Link href="#contact" className="hover:text-white">
+              Contact
+            </Link>
+          </nav>
+
+          {/* Google Auth 버튼 */}
+          <button
+            onClick={user ? handleLogout : handleGoogleLogin}
+            disabled={loadingAuth}
+            className="flex items-center gap-2 rounded-full border border-white/40 bg-white/5 px-4 py-2 text-xs sm:text-sm text-blue-50 hover:bg-white/10 disabled:opacity-60"
+          >
+            {loadingAuth
+              ? "Loading..."
+              : user
+              ? "Logout"
+              : "Sign in with Google"}
+          </button>
+        </div>
       </header>
 
       {/* Hero */}
@@ -117,7 +191,6 @@ export default function Page() {
             </p>
           </div>
         </div>
-
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-3xl bg-white/5 p-6">
             <h3 className="text-lg font-semibold">Premium F&amp;B Partners</h3>
