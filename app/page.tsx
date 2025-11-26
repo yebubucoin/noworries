@@ -2,140 +2,175 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Page() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <main className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Neon backdrop accents */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl opacity-40" style={{background: "radial-gradient(40% 40% at 50% 50%, #7fff00 0%, rgba(127,255,0,0) 70%)"}} />
-        <div className="absolute top-1/2 -translate-y-1/2 -right-24 h-80 w-80 rounded-full blur-3xl opacity-30" style={{background: "radial-gradient(40% 40% at 50% 50%, #7fff00 0%, rgba(127,255,0,0) 70%)"}} />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#7fff00]/70 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#7fff00]/70 to-transparent" />
-      </div>
-
-      {/* Grid overlay */}
-      <div aria-hidden className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(to_right,rgba(127,255,0,.35)_1px,transparent_1px),linear-gradient(to_bottom,rgba(127,255,0,.35)_1px,transparent_1px)] [background-size:40px_40px]" />
-
+    <main className="min-h-screen bg-[#190F58] text-white relative">
       {/* Nav */}
-      <header className="relative z-10 mx-auto max-w-6xl px-6 py-6 flex items-center justify-between">
-        <Link href="#" className="font-semibold tracking-wide text-[#7fff00] hover:text-white transition">NEXT GEN</Link>
-        <nav className="hidden sm:flex items-center gap-6 text-sm text-zinc-300">
-          <Link href="#about" className="hover:text-white">About</Link>
-          <Link href="#vision" className="hover:text-white">Vision</Link>
-          <Link href="#contact" className="hover:text-white">Contact</Link>
+      <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+        <Link
+          href="#"
+          className="font-semibold tracking-wide text-white hover:opacity-80 transition"
+        >
+          noworrieskorea
+        </Link>
+        <nav
+          className="hidden items-center gap-6 text-sm text-blue-100/80 sm:flex"
+          aria-label="Primary"
+        >
+          <Link href="#package" className="hover:text-white">
+            Spring Package
+          </Link>
+          <Link href="#benefits" className="hover:text-white">
+            Benefits
+          </Link>
+          <Link href="#contact" className="hover:text-white">
+            Contact
+          </Link>
         </nav>
       </header>
 
       {/* Hero */}
-      <section className="relative z-10 mx-auto max-w-6xl px-6 pt-16 pb-24 sm:pt-24 sm:pb-32">
-        <h1 className="text-5xl sm:text-7xl font-extrabold leading-[1.05]">
-          <span className="block text-white">Build the</span>
-          <span className="mt-2 block text-[#7fff00]" style={{textShadow: "0 0 20px rgba(127,255,0,1), 0 0 40px rgba(127,255,0,.9)"}}>Next Generation</span>
+      <section className="mx-auto max-w-6xl px-6 pt-12 pb-20 sm:pt-20 sm:pb-24">
+        <h1 className="text-4xl font-bold leading-snug sm:text-5xl lg:text-6xl">
+          <span className="block">Making Your Life in Korea</span>
+          <span className="mt-1 block">Easy and Worry Free</span>
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-zinc-300">
-          검은 배경 위에 연두 네온의 심장. <span className="text-white font-medium">Next Gen</span>은 창업가와 크리에이터를 위한 실험실입니다.
-          새로운 제품과 문화를 빠르게 만들고, 세상에 증명합니다.
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-blue-100/90 sm:text-lg">
+          noworrieskorea helps you settle in Korea seamlessly. For the{" "}
+          <span className="font-semibold text-white">Spring semester</span>,
+          we’ve prepared a special package for international students and
+          expats who find their home through NoWorries.
         </p>
-        <div className="mt-10 flex flex-wrap items-center gap-4">
+        <div className="mt-8 flex flex-wrap items-center gap-4">
           <Link
             href="#contact"
-            className="group inline-flex items-center gap-2 rounded-2xl border border-[#7fff00]/60 bg-[#7fff00]/10 px-5 py-3 text-[#7fff00] hover:text-black hover:bg-[#7fff00]/80 hover:border-[#7fff00] transition"
-            style={{boxShadow: "0 0 30px rgba(127,255,0,.8), inset 0 0 16px rgba(127,255,0,.4)"}}
+            className="inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#190F58] hover:bg-blue-50 transition"
           >
-            <span className="font-medium">네온 컨택트</span>
-            <svg className="h-4 w-4 translate-x-0 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14"/>
-              <path d="M12 5l7 7-7 7"/>
-            </svg>
+            Apply for Spring Package
           </Link>
-
-          {/* External Instagram */}
-          <a
-            href="https://instagram.com/nextgen.kr"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-2xl border border-zinc-700 bg-zinc-900/60 px-5 py-3 text-zinc-200 hover:border-[#7fff00] hover:text-[#7fff00] transition"
-          >
-            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.8A6.2 6.2 0 1 0 18.2 14 6.2 6.2 0 0 0 12 7.8Zm0 2.4A3.8 3.8 0 1 1 8.2 14 3.8 3.8 0 0 1 12 10.2Zm6.5-4a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1Z"/>
-            </svg>
-            <span className="font-medium">@nextgen.kr</span>
-          </a>
-        </div>
-      </section>
-
-      {/* Founder card */}
-      <section id="about" className="relative z-10 mx-auto max-w-6xl px-6 pb-24">
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-3xl border border-[#7fff00]/60 bg-gradient-to-b from-zinc-900/60 to-zinc-900/20 p-6 backdrop-blur">
-            <h2 className="text-xl tracking-wide text-[#7fff00]">Founder</h2>
-            <p className="mt-2 text-3xl font-bold">송유빈</p>
-            <p className="mt-3 text-zinc-300 leading-relaxed">
-              사용자와 창업가가 진짜로 원하는 것을 빠르게 만들고 검증합니다. Next Gen은
-              프로토타입 → 베타 → 론치까지의 사이클을 네온처럼 선명하게, 짧게 가져갑니다.
-            </p>
-            <div className="mt-6 flex gap-3">
-              <a href="https://instagram.com/nextgen.kr" target="_blank" rel="noreferrer" className="rounded-xl border border-[#7fff00]/60 px-4 py-2 text-sm text-[#7fff00] hover:bg-[#7fff00]/10">Instagram</a>
-              <Link href="#contact" className="rounded-xl border border-zinc-700 px-4 py-2 text-sm text-zinc-200 hover:border-[#7fff00]">Contact</Link>
-            </div>
-          </div>
-          <div className="rounded-3xl border border-zinc-800 p-6 bg-zinc-900/30">
-            <h3 className="text-lg text-zinc-300">What we build</h3>
-            <ul className="mt-3 space-y-3 text-zinc-300">
-              <li className="flex items-start gap-3"><span className="mt-1 h-2 w-2 rounded-full bg-[#7fff00] shadow-[0_0_14px_rgba(127,255,0,1)]"/>네온 같은 간결함의 제품 경험</li>
-              <li className="flex items-start gap-3"><span className="mt-1 h-2 w-2 rounded-full bg-[#7fff00] shadow-[0_0_14px_rgba(127,255,0,1)]"/>크리에이터 & 스타트업 도구</li>
-              <li className="flex items-start gap-3"><span className="mt-1 h-2 w-2 rounded-full bg-[#7fff00] shadow-[0_0_14px_rgba(127,255,0,1)]"/>커뮤니티가 사랑하는 브랜드</li>
-            </ul>
-            <div className="mt-6 rounded-xl border border-[#7fff00]/40 p-4 text-sm text-zinc-400">
-              Next.js + Tailwind 중심의 모던 스택. 빠른 배포, 데이터 기반 개선, 미학에 집착.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision strip */}
-      <section id="vision" className="relative z-10 mx-auto max-w-6xl px-6 pb-24">
-        <div className="rounded-3xl border border-[#7fff00]/40 p-10 bg-gradient-to-br from-black to-zinc-900/60">
-          <h2 className="text-3xl sm:text-4xl font-bold">
-            미래는 <span className="text-[#7fff00]" style={{textShadow: "0 0 24px rgba(127,255,0,1)"}}>만드는 자</span>의 것
-          </h2>
-          <p className="mt-4 max-w-3xl text-zinc-300">
-            사용자 문제를 레이저처럼 관통하는 솔루션. Next Gen은 작은 팀으로 큰 임팩트를 만듭니다.
+          <p className="text-xs text-blue-100/80">
+            Housing first, benefits unlocked automatically.
           </p>
         </div>
       </section>
 
+      {/* Package overview */}
+      <section
+        id="package"
+        className="mx-auto max-w-6xl px-6 pb-16 sm:pb-20"
+      >
+        <div className="rounded-3xl bg-white/5 p-8 shadow-lg backdrop-blur-sm">
+          <h2 className="text-2xl font-semibold sm:text-3xl">
+            Spring 202X Special Package
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-blue-100/90 sm:text-base">
+            봄학기 동안 <span className="font-semibold">noworrieskorea</span>를
+            통해 한국 집을 계약하는 분들께, 생활 정착에 필요한 서비스를
+            한 번에 제공합니다.
+          </p>
+          <ul className="mt-6 space-y-3 text-sm text-blue-50 sm:text-base">
+            <li>
+              • 한국 도착 시{" "}
+              <span className="font-semibold">공항 픽업 서비스</span> 지원
+            </li>
+            <li>
+              • 피부과, 성형외과, 치과 등{" "}
+              <span className="font-semibold">제휴 클리닉 할인</span> 제공
+            </li>
+            <li>
+              • 제휴된 한국{" "}
+              <span className="font-semibold">프리미엄 F&amp;B 브랜드</span>에서
+              최대 <span className="font-semibold">20% 할인</span>
+            </li>
+            <li>
+              • <span className="font-semibold">U+</span>를 통한 유심 구매 및
+              휴대폰 개통 할인
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Benefits detail */}
+      <section
+        id="benefits"
+        className="mx-auto max-w-6xl px-6 pb-20 space-y-8 sm:space-y-10"
+      >
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-3xl bg-white/5 p-6">
+            <h3 className="text-lg font-semibold">Housing & Arrival</h3>
+            <p className="mt-3 text-sm leading-relaxed text-blue-100/90">
+              집 찾기, 계약, 랜드로드와의 커뮤니케이션까지
+              noworrieskorea가 함께합니다. 한국에 도착하면 제휴 차량을 통해
+              공항에서 바로 집까지 픽업을 받아보세요.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-white/5 p-6">
+            <h3 className="text-lg font-semibold">Healthcare Support</h3>
+            <p className="mt-3 text-sm leading-relaxed text-blue-100/90">
+              믿을 수 있는 피부과, 성형외과, 치과 파트너들과 제휴되어 있어,
+              예약부터 통역, 결제까지 더 안전하고 합리적으로 이용할 수
+              있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-3xl bg-white/5 p-6">
+            <h3 className="text-lg font-semibold">Premium F&amp;B Partners</h3>
+            <p className="mt-3 text-sm leading-relaxed text-blue-100/90">
+              한국의 프리미엄 카페, 레스토랑, 바 브랜드들과 협업하여 최대{" "}
+              <span className="font-semibold">20% 할인</span> 혜택을
+              제공합니다. 친구들과의 모임, 데이트, 혼밥까지 부담 없이 즐겨보세요.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-white/5 p-6">
+            <h3 className="text-lg font-semibold">Telecom by U+</h3>
+            <p className="mt-3 text-sm leading-relaxed text-blue-100/90">
+              유심 구매부터 휴대폰 개통까지, U+와 함께 할인된 가격으로
+              빠르게 연결해 드립니다. 한국에 도착한 순간부터 바로 데이터와
+              통화를 사용할 수 있도록 준비해요.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
-      <section id="contact" className="relative z-10 mx-auto max-w-6xl px-6 pb-24">
-        <div className="rounded-3xl border border-zinc-800 p-8 bg-zinc-900/40">
+      <section
+        id="contact"
+        className="mx-auto max-w-6xl px-6 pb-20 sm:pb-24"
+      >
+        <div className="rounded-3xl bg-white/5 p-8">
           <h2 className="text-2xl font-semibold">Contact</h2>
-          <p className="mt-2 text-zinc-300">콜라보 / 제휴 / 채용 문의</p>
+          <p className="mt-2 text-sm text-blue-100/90 sm:text-base">
+            봄학기 스페셜 패키지 신청 / 파트너십 / 기타 문의
+          </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <a
-              href="mailto:hello@nextgen.kr"
-              className="rounded-2xl border border-[#7fff00]/60 bg-[#7fff00]/10 px-5 py-3 text-[#7fff00] hover:bg-[#7fff00]/30"
+              href="mailto:hello@noworrieskorea.com"
+              className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#190F58] hover:bg-blue-50 transition"
             >
-              hello@nextgen.kr
+              hello@noworrieskorea.com
             </a>
             <a
-              href="https://instagram.com/nextgen.kr"
+              href="https://instagram.com/noworrieskorea"
               target="_blank"
               rel="noreferrer"
-              className="rounded-2xl border border-zinc-700 bg-zinc-900/60 px-5 py-3 text-zinc-200 hover:border-[#7fff00] hover:text-[#7fff00]"
+              className="rounded-full border border-white/40 px-5 py-3 text-sm text-blue-50 hover:bg-white/10 transition"
             >
-              Instagram @nextgen.kr
+              Instagram @noworrieskorea
             </a>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 mx-auto max-w-6xl px-6 pb-10 flex items-center justify-between text-xs text-zinc-500">
-        <span>© {new Date().getFullYear()} Next Gen. All rights reserved.</span>
-        <span className="text-[#7fff00]">Made with Next.js</span>
+      <footer className="mx-auto flex max-w-6xl items-center justify-between px-6 pb-10 text-xs text-blue-100/70">
+        <span>© {currentYear} noworrieskorea. All rights reserved.</span>
+        <span className="opacity-80">Made with Next.js</span>
       </footer>
     </main>
   );
