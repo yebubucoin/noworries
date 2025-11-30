@@ -200,13 +200,14 @@ export default function Page() {
           </div>
 
           {/* ✅ 우측 상단 test.png 이미지 */}
-          <Image
-            src="/test.png"
-            alt="test badge"
-            width={40}
-            height={40}
-            className="rounded-full border border-white/40 object-cover"
-          />
+       <Image
+  src="/test.png"
+  alt="test badge"
+  width={20}
+  height={20}
+  className="mt-[2px] object-contain opacity-90"
+/>
+
         </div>
       </header>
 
